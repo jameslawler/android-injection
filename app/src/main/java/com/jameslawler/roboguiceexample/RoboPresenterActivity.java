@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.google.inject.Inject;
 
+import butterknife.ButterKnife;
 import roboguice.activity.RoboActivity;
 
 /**
@@ -11,10 +12,11 @@ import roboguice.activity.RoboActivity;
  */
 public class RoboPresenterActivity<T extends IPresenter> extends RoboActivity {
     @Inject
-    T presenter;
+    protected T presenter;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ButterKnife.bind(this);
         this.presenter.bindView(this);
 
         if (savedInstanceState == null) {

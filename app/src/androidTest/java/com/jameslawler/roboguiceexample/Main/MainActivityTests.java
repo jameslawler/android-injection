@@ -1,4 +1,6 @@
-package com.jameslawler.roboguiceexample;
+package com.jameslawler.roboguiceexample.Main;
+
+import com.jameslawler.roboguiceexample.BuildConfig;
 
 import org.junit.After;
 import org.junit.Before;
@@ -15,7 +17,7 @@ import roboguice.RoboGuice;
 public class MainActivityTests {
     @Before
     public void setup() {
-        //RoboGuice.overrideApplicationInjector(Robolectric.application, new MyTestModule());
+        RoboGuice.overrideApplicationInjector(Robolectric.application, new MyTestModule());
     }
 
     @After
@@ -25,7 +27,7 @@ public class MainActivityTests {
 
     @Test
     public void createTriggersCompute() throws InterruptedException {
-        //Robolectric.buildActivity(MyActivity.class).create().start();
-        //verify(serviceMock).compute();
+        Robolectric.buildActivity(MyActivity.class).create().start();
+        verify(serviceMock).compute();
     }
 }

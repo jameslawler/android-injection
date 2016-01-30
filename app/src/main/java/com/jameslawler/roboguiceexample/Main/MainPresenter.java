@@ -14,36 +14,18 @@ import javax.inject.Singleton;
 @Singleton
 public class MainPresenter extends Presenter<IMainView> implements IPresenter<IMainView> {
     private Calculator calculator;
-    private int count;
 
     @Inject
     public MainPresenter(Calculator calculator) {
         this.calculator = calculator;
-        this.count = 0;
     }
 
-    @Override
-    public void onResume() {
-        if (this.view == null) {
-            return;
-        }
+    public void calculate(String input1, String input2) {
+        Integer input1AsInteger = Integer.parseInt(input1);
+        Integer input2AsInteger = Integer.parseInt(input2);
 
-        this.count++;
-        Integer result = this.calculator.Add(3, this.count);
-        this.view.showMessage("The result is " + result.toString());
-    }
+        Integer result = this.calculator.Add(input1AsInteger, input2AsInteger);
 
-    @Override
-    public void onPause() {
-        if (this.view == null) {
-            return;
-        }
-
-        this.view.showMessage("Paused");
-    }
-
-    @Override
-    public void resetState() {
-        this.count = 0;
+        this.view.showResult(result.toString());
     }
 }
