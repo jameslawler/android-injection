@@ -32,5 +32,4 @@ dependencies {
     compile 'org.roboguice:roboguice:3.+'
     compile 'com.jakewharton:butterknife:7.0.1'
     provided 'org.roboguice:roboblender:3.+'
-    androidTestCompile 'junit:junit:4.12'
 }

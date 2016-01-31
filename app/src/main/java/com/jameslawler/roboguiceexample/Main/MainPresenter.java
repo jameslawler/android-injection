@@ -20,9 +20,17 @@ public class MainPresenter extends Presenter<IMainView> implements IPresenter<IM
         this.calculator = calculator;
     }
 
-    public void calculate(String input1, String input2) {
-        Integer input1AsInteger = Integer.parseInt(input1);
-        Integer input2AsInteger = Integer.parseInt(input2);
+    public void onCalculateClicked(String input1, String input2) {
+        Integer input1AsInteger;
+        Integer input2AsInteger;
+
+        try {
+            input1AsInteger = Integer.parseInt(input1);
+            input2AsInteger = Integer.parseInt(input2);
+        } catch (NumberFormatException exception) {
+            this.view.showResult("Bad input");
+            return;
+        }
 
         Integer result = this.calculator.Add(input1AsInteger, input2AsInteger);
 

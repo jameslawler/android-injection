@@ -2,7 +2,6 @@ package com.jameslawler.roboguiceexample.Main;
 
 import com.jameslawler.roboguiceexample.Services.Calculator;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,10 +31,23 @@ public class MainPresenterTests {
         when(this.calculatorMock.Add(10, 20)).thenReturn(30);
 
         // Act
-        this.presenter.calculate(input1, input2);
+        this.presenter.onCalculateClicked(input1, input2);
 
         // Assert
         verify(this.calculatorMock).Add(10, 20);
         verify(this.mainViewMock).showResult("30");
+    }
+
+    @Test
+    public void whenCalculateWithInvalidInputShouldShouldShowErrorMessageInResult() {
+        // Arrange
+        String input1 = "abc";
+        String input2 = "20";
+
+        // Act
+        this.presenter.onCalculateClicked(input1, input2);
+
+        // Assert
+        verify(this.mainViewMock).showResult("Bad input");
     }
 }

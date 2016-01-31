@@ -23,7 +23,10 @@ public class MainActivity extends RoboPresenterActivity<MainPresenter> implement
 
     @OnClick(R.id.calculate)
     public void onCalculateClick() {
-        this.presenter.calculate(txtInput1.getText().toString(), txtInput2.getText().toString());
+        String input1 = txtInput1.getText().toString();
+        String input2 = txtInput2.getText().toString();
+
+        this.presenter.onCalculateClicked(input1, input2);
     }
 
     @Override

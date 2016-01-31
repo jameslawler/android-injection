@@ -5,8 +5,8 @@ package com.jameslawler.roboguiceexample.Services;
  */
 
 public class Calculator {
-    public int Add(int x, int y)
+    public int Add(int firstNumber, int secondNumber)
     {
-        return x + y;
+        return firstNumber + secondNumber;
     }
 }

@@ -59,7 +59,7 @@ public class MainActivityTests {
         calculate.performClick();
 
         // Assert
-        verify(this.presenterMock).calculate("15", "22");
+        verify(this.presenterMock).onCalculateClicked("15", "22");
     }
 
     @Test
@@ -72,7 +72,7 @@ public class MainActivityTests {
         calculate.performClick();
 
         // Assert
-        verify(this.presenterMock).calculate("1", "2");
+        verify(this.presenterMock).onCalculateClicked("1", "2");
     }
 
     public class MainActivityMock extends AbstractModule {
