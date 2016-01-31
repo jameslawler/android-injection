@@ -13,8 +13,8 @@ import static org.mockito.Mockito.when;
  * Created by james on 1/30/2016.
  */
 public class MainPresenterTests {
-    private Calculator calculatorMock = mock(Calculator.class);
-    private IMainView mainViewMock = mock(IMainView.class);
+    private final Calculator calculatorMock = mock(Calculator.class);
+    private final IMainView mainViewMock = mock(IMainView.class);
     private MainPresenter presenter;
 
     @Before

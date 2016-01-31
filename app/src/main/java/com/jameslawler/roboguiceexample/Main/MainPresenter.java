@@ -13,7 +13,7 @@ import javax.inject.Singleton;
 
 @Singleton
 public class MainPresenter extends Presenter<IMainView> implements IPresenter<IMainView> {
-    private Calculator calculator;
+    private final Calculator calculator;
 
     @Inject
     public MainPresenter(Calculator calculator) {

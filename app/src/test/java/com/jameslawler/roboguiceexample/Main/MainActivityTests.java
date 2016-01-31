@@ -28,7 +28,7 @@ import static org.mockito.Mockito.verify;
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = Build.VERSION_CODES.LOLLIPOP)
 public class MainActivityTests {
-    private MainPresenter presenterMock = mock(MainPresenter.class);
+    private final MainPresenter presenterMock = mock(MainPresenter.class);
     private MainActivity mainActivity;
     private Button calculate;
     private EditText input1;
