@@ -3,10 +3,13 @@ package com.jameslawler.roboguiceexample.Main;
 import android.os.Build;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.inject.AbstractModule;
 import com.jameslawler.roboguiceexample.BuildConfig;
 import com.jameslawler.roboguiceexample.R;
+
+import junit.framework.Assert;
 
 import org.junit.After;
 import org.junit.Before;
@@ -16,6 +19,7 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
+import org.w3c.dom.Text;
 
 import roboguice.RoboGuice;
 
@@ -30,18 +34,20 @@ public class MainActivityTests {
     private Button calculate;
     private EditText input1;
     private EditText input2;
+    private TextView result;
 
     @Before
     public void setup() {
         RoboGuice.overrideApplicationInjector(RuntimeEnvironment.application, new MainActivityMock());
 
-        mainActivity = Robolectric.buildActivity(MainActivity.class)
+        this.mainActivity = Robolectric.buildActivity(MainActivity.class)
                                     .create()
                                     .start()
                                     .get();
-        calculate = (Button) mainActivity.findViewById(R.id.calculate);
-        input1 = (EditText) mainActivity.findViewById(R.id.input1);
-        input2 = (EditText) mainActivity.findViewById(R.id.input2);
+        this.calculate = (Button) mainActivity.findViewById(R.id.calculate);
+        this.input1 = (EditText) mainActivity.findViewById(R.id.input1);
+        this.input2 = (EditText) mainActivity.findViewById(R.id.input2);
+        this.result = (TextView) mainActivity.findViewById(R.id.result);
     }
 
     @After
@@ -52,27 +58,26 @@ public class MainActivityTests {
     @Test
     public void whenPressCalculateShouldShowResult() {
         // Arrange
-        input1.setText("15");
-        input2.setText("22");
+        this.input1.setText("15");
+        this.input2.setText("22");
 
         // Act
-        calculate.performClick();
+        this.calculate.performClick();
 
         // Assert
         verify(this.presenterMock).onCalculateClicked("15", "22");
     }
 
     @Test
-    public void whenPressCalculateShouldShowResult2() {
+    public void whenShowResultShouldShowResultInLabel() {
         // Arrange
-        input1.setText("1");
-        input2.setText("2");
+        String expectedResult = "Result is 150";
 
         // Act
-        calculate.performClick();
+        this.mainActivity.showResult(expectedResult);
 
         // Assert
-        verify(this.presenterMock).onCalculateClicked("1", "2");
+        Assert.assertEquals(expectedResult, this.result.getText().toString());
     }
 
     public class MainActivityMock extends AbstractModule {

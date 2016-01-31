@@ -35,5 +35,4 @@
         android:id="@+id/result"
         android:layout_below="@id/calculate"/>
 
-
 </RelativeLayout>
