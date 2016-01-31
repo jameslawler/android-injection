@@ -1,7 +1,5 @@
 package com.jameslawler.roboguiceexample;
 
-import com.jameslawler.roboguiceexample.Main.IMainView;
-
 /**
  * Created by james on 1/30/2016.
  */

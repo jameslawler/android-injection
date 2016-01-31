@@ -13,13 +13,13 @@ import roboguice.inject.InjectView;
 @ContentView(R.layout.activity_main)
 public class MainActivity extends RoboPresenterActivity<MainPresenter> implements IMainView {
     @InjectView(R.id.input1)
-    EditText txtInput1;
+    private EditText txtInput1;
 
     @InjectView(R.id.input2)
-    EditText txtInput2;
+    private EditText txtInput2;
 
     @InjectView(R.id.result)
-    TextView txtResult;
+    private TextView txtResult;
 
     @OnClick(R.id.calculate)
     public void onCalculateClick() {

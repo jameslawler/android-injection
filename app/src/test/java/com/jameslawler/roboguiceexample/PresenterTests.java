@@ -1,8 +1,6 @@
 package com.jameslawler.roboguiceexample;
 
 import com.jameslawler.roboguiceexample.Main.IMainView;
-import com.jameslawler.roboguiceexample.Main.MainPresenter;
-import com.jameslawler.roboguiceexample.Services.Calculator;
 
 import junit.framework.Assert;
 

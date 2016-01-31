@@ -19,7 +19,6 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
-import org.w3c.dom.Text;
 
 import roboguice.RoboGuice;
 
